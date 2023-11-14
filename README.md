@@ -62,11 +62,57 @@ void winrt::App4::implementation::MainWindow::CanvasControl_Draw(winrt::Microsof
 }
 ```
 실행화면
-.[image]![1.PNG]
+![Image description](./1.PNG)</br>
 
 2. C#을 이용한 두 수를 곱하는 프로그램</br>
 
 
 ```
+//MainWindow.xaml
+<Window
+    x:Class="App10.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App10"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBox x:Name="txtNumber1" PlaceholderText="첫 번째 숫자를 입력하세요" />
+        <TextBox x:Name="txtNumber2" PlaceholderText="두 번째 숫자를 입력하세요" />
+        <Button x:Name="myButton" Click="myButton_Click">곱하기</Button>
+        <TextBlock x:Name="txtResult" />
+    </StackPanel>
+</Window>
+```
 
 ```
+//MainWindow.xaml.cs
+namespace App10
+{
+    /// <summary>
+    /// An empty window that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            this.InitializeComponent();
+        }
+        private void myButton_Click(object sender, RoutedEventArgs e)
+        {
+            double number1 = double.Parse(txtNumber1.Text);
+            double number2 = double.Parse(txtNumber2.Text);
+
+            double result = number1 * number2;
+            txtResult.Text = $"결과: {result}";
+
+        }
+    }
+}
+
+```
+
+실행 화면
+![Image description](./2.PNG)</br>
